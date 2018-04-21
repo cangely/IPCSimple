@@ -19,8 +19,12 @@
 
         <service
             android:name=".StudentManagerService"
-            android:process=":remote"
-            />
+            android:process=":remote" />
+        <service
+            android:name=".messenger.MessengerService"
+            android:process=":remote2" />
+
+        <activity android:name=".messenger.MessengerActivity"/>
     </application>
 
 </manifest>

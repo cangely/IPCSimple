@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Binder;
 import android.os.IBinder;
 import android.os.RemoteException;
+import android.util.Log;
 
 import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
@@ -24,6 +25,7 @@ public class StudentManagerService extends Service {
 
     @Override
     public IBinder onBind(Intent intent) {
+        Log.d("StudentManagerService", "Service onBind");
         return binder;
     }
     private Binder binder = new IStudentManager.Stub() {

@@ -11,6 +11,8 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 
+import com.dou.ipcsimple.messenger.MessengerActivity;
+
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
@@ -21,6 +23,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+
         findViewById(R.id.btnSendRequest).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -28,6 +31,15 @@ public class MainActivity extends AppCompatActivity {
                 bindService(intent, mServiceConnection, Context.BIND_AUTO_CREATE);
             }
         });
+
+        findViewById(R.id.btnEnterMessengerAct).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, MessengerActivity.class);
+                startActivity(intent);
+            }
+        });
+
     }
 
     private ServiceConnection mServiceConnection = new ServiceConnection() {
@@ -41,6 +53,7 @@ public class MainActivity extends AppCompatActivity {
 
                 Student student = new Student(1003,"Jack");
                 studentManager.addStudent(student);
+                students = studentManager.getStudentList();
                 Log.d(TAG, "Client Request students:" + students);
             } catch (RemoteException e) {
                 e.printStackTrace();
