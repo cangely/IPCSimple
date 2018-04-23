@@ -1,16 +1,15 @@
 // IStuManager.aidl
 package com.dou.ipcsimple;
-
-// Declare any non-default types here with import statements
 import com.dou.ipcsimple.Student;
+import com.dou.ipcsimple.IOnStudentAddedListener;
 
 interface IStudentManager {
-    /**
-     * Demonstrates some basic types that you can use as parameters
-     * and return values in AIDL.
-     */
     void basicTypes(int anInt, long aLong, boolean aBoolean, float aFloat,
             double aDouble, String aString);
     void addStudent(in Student student);
     List<Student> getStudentList();
+    //新增的接口，用于注册和注销回调接口
+    void registerListener(IOnStudentAddedListener listener);
+    void unregisterListener(IOnStudentAddedListener listener);
+
 }

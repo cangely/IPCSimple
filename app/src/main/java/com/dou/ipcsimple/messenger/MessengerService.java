@@ -50,4 +50,6 @@ public class MessengerService extends Service {
         Log.d(TAG, "Service onBind");
         return mMessenger.getBinder();
     }
+
+
 }
